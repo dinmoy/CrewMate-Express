@@ -1,7 +1,7 @@
 const {DataTypes}=require('sequelize')
 
-const History=(sequelize)=>{
-    return sequelize.define('history',{
+const Schedule=(sequelize)=>{
+    return sequelize.define('schedule',{
         id:{
             type:DataTypes.INTEGER,
             PrimaryKey:true,
@@ -38,4 +38,4 @@ const History=(sequelize)=>{
         },
     });
 };
-module.exports=History;
+module.exports=Schedule;
