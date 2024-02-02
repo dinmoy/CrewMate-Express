@@ -2,11 +2,11 @@ const {DataTypes}=require('sequelize');
 
 const Activity=(sequelize)=>{
     return sequelize.define('activity',{
-        id:{
-            type:DataTypes.INTEGER,
-            PrimaryKey:true,
-            AutoIncrement:true,
-            allowNull:true,
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
         },
         club_id: {
             type: DataTypes.INTEGER,

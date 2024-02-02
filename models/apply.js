@@ -4,8 +4,8 @@ const Apply = (sequelize) => {
     return sequelize.define('apply_form', {
         id: {
             type: DataTypes.INTEGER,
-            PrimaryKey: true,
-            AutoIncrement: true,
+            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
         },
         club_id: {

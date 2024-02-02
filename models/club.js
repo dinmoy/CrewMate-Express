@@ -1,12 +1,12 @@
-const {DataTyppes}=require('sequelize')
+const {DataTypes}=require('sequelize')
 
 const Club=(sequelize)=>{
     return sequelize.define('club',{
         id: {
             type: DataTypes.INTEGER,
-            PrimaryKey: true,
-            AutoIncrement: true,
-            allowNull: true,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
         },
         user_id:{
             type:DataTypes.INTEGER,

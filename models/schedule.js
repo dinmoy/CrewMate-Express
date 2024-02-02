@@ -2,11 +2,11 @@ const {DataTypes}=require('sequelize')
 
 const Schedule=(sequelize)=>{
     return sequelize.define('schedule',{
-        id:{
-            type:DataTypes.INTEGER,
-            PrimaryKey:true,
-            AutoIncrement:true,
-            allowNull:true,
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
         },
         club_id:{
             type:DataTypes.INTEGER,
@@ -25,11 +25,11 @@ const Schedule=(sequelize)=>{
             alllowNull:false,
         },
         startTime:{
-            type:DataTypes.DATETIME,
+            type:DataTypes.DATE,
             allowNull:false,
         },
         endTime:{
-            type:DataTypes.DATETIME,
+            type:DataTypes.DATE,
             allowNull:false,
         },
         memo:{

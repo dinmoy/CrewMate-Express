@@ -4,9 +4,9 @@ const Member = (sequelize) => {
     return sequelize.define('member', {
         id: {
             type: DataTypes.INTEGER,
-            PrimaryKey: true,
-            AutoIncrement: true,
-            allowNull: true,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
         },
         club_id: {
             type: DataTypes.INTEGER,
