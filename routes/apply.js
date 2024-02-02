@@ -16,6 +16,7 @@ router.post('/',async(req,res)=>{
     }
 })
 
+//지원폼 수정
 router.put('/:id',async(req,res)=>{
     const formId=req.params.id
     try{
@@ -26,6 +27,20 @@ router.put('/:id',async(req,res)=>{
     }catch(err){
         console.log(err)
         return res.status(500).json({error:'Error updating'})
+    }
+})
+
+//지원폼 삭제
+router.delete('/:id',async(req,res)=>{
+    const formId=req.params.id
+    try{
+        const form=await Apply.findByPk(formId)
+        if(!form) return res.status(404).json('apply-form not found')
+        await form.destroy()
+        return res.status(204).json()
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error deleting apply-form'})
     }
 })
 module.exports=router
