@@ -39,7 +39,7 @@ router.delete('/:id',async(req,res)=>{
         return res.status(204).json()
     }catch(err){
         console.log(err)
-        return res.status(500).json({error: 'Error deleting activity'})
+        return res.status(500).json({error: 'Error deleting'})
     }
 })
 
