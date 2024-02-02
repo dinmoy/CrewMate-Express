@@ -1,5 +1,6 @@
 const express = require('express')
 const { Member } = require('../models')
+const { route } = require('./user')
 
 const router = express.Router()
 
@@ -26,4 +27,17 @@ router.post('/',async(req,res)=>{
     }
 })
 
+//부원 업데이트
+router.put('/:id',async(req,res)=>{
+    const memberId=req.params.id
+    try{
+        const member=await Member.findByPk(memberId)
+        if(!member) return res.statuts(404).json('Member not found')
+        await member.update(req.body)
+        return res.status(200).json(member)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error updating member'})
+    }
+})
 module.exports=router
