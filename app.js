@@ -7,11 +7,13 @@ const port = 3000
 const userRouter=require('./routes/user')
 const clubRouter=require('./routes/club')
 const activityRouter=require('./routes/activity')
+const memberRouter=require('./routes/member')
 app.use(express.json())
 
 app.use('/users',userRouter)
-app.use('/clubs',clubRouter)
+app.use('/club',clubRouter)
 app.use('/activity',activityRouter)
+app.use('/member',memberRouter)
 app.get('/', (req, res) => {
     res.send('CrewMate')
 })
