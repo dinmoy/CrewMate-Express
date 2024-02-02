@@ -3,6 +3,17 @@ const {Activity}=require('../models')
 
 const router=express.Router()
 
+//전체 활동 조회
+router.get('/',async(req,res)=>{
+    try{
+        const activity=await Activity.findAll()
+        return res.status(200).json(activity)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Erro reading all activity'})
+    }
+})
+
 //활동 생성
 router.post('/',async(req,res)=>{
     try{
