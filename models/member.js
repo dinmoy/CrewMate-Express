@@ -23,6 +23,10 @@ const Member = (sequelize) => {
             type: DataTypes.STRING(255),
             allowNull: false,
         },
+        profile:{
+            type:DataTypes.STRING(255),
+            allowNull:false,
+        },
     });
 };
 module.exports = Member

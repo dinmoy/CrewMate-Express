@@ -19,6 +19,10 @@ const Activity=(sequelize)=>{
             type:DataTypes.STRING(20),
             allowNull:false,
         },
+        introduction:{
+            type:DataTypes.STRING(255),
+            allowNull:false,
+        },
         thumbnail:{
             type:DataTypes.STRING(255),
             allowNull:false,
