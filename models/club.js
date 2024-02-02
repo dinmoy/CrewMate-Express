@@ -8,19 +8,11 @@ const Club=(sequelize)=>{
             autoIncrement: true,
             allowNull: false,
         },
-        user_id:{
-            type:DataTypes.INTEGER,
-            allowNull:false,
-            reference:{
-                model:'user',
-                key:'id',
-            },
-        },
         name:{
             type:DataTypes.STRING(20),
             allowNull:false,
         },
-        intoriduction:{
+        introiduction:{
             type:DataTypes.STRING(55),
             allowNull:false,
         },
