@@ -12,7 +12,7 @@ const Club=(sequelize)=>{
             type:DataTypes.STRING(20),
             allowNull:false,
         },
-        introiduction:{
+        introduction:{
             type:DataTypes.STRING(55),
             allowNull:false,
         },
