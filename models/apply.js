@@ -16,18 +16,6 @@ const Apply = (sequelize) => {
                 key: 'id',
             },
         },
-        name: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-        },
-        student_num: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        phone_num: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-        },
         question1: {
             type: DataTypes.STRING(255),
             allowNull: false,
