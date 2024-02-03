@@ -23,4 +23,16 @@ router.post('/',async(req,res)=>{
         return res.status(500).json({error:'Error creating history'})
     }
 })
+router.put('/:id',async(req,res)=>{
+    const historyId=req.params.id
+    try{
+        const history=await History.findByPk(historyId)
+        if(!history) return res.status(404).json('History not found')
+        await history.update(req.body)
+        return res.status(200).json(history)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error updating history'})
+    }
+})
 module.exports=router
