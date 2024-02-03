@@ -1,6 +1,6 @@
 const {DataTypes}=require('sequelize');
 
-const Hisotry=(sequelize)=>{
+const History=(sequelize)=>{
     return sequelize.define('history',{
         id: {
             type: DataTypes.INTEGER,
@@ -29,4 +29,4 @@ const Hisotry=(sequelize)=>{
         },
     });
 };
-module.exports=Hisotry;
+module.exports=History;
