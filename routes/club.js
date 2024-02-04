@@ -24,4 +24,18 @@ router.post('/',async(req,res)=>{
     }
 })
 
+router.put('/:id',async(req,res)=>{
+    const clubId=req.params.id
+    try{
+        const club=await Club.findByPk(clubId)
+        if(!club) return res.status(404).json({error:'club not found'})
+        await club.update(req.body)
+        return res.status(200).json(club)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error updating club'})
+    }
+})
+
+
 module.exports=router
