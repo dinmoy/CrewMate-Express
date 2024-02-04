@@ -23,4 +23,17 @@ router.post('/',async(req,res)=>{
     }
 })
 
+router.put('/:id',async(req,res)=>{
+    const scheduleId=req.params.id
+    try{
+        const schedule=await Schedule.findByPk(scheduleId)
+        if(!schedule) return res.status(404).json({error:'schedule not found'})
+        await schedule.update(req.body)
+        return res.status(200).json(schedule)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error updating schedule'})
+    }
+})
+
 module.exports=router
