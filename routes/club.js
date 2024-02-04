@@ -1,5 +1,5 @@
 const express=require('express')
-const {Club,Member,Activity}=require('../models')
+const {Club,Member,Activity,History}=require('../models')
 
 const router=express.Router()
 
@@ -36,6 +36,23 @@ router.get('/:id/activity',async(req,res)=>{
     try{
         const activity=await Activity.findAll({where:{club_id:clubId}})
         const data=activity.map((el,index)=>{
+            return {
+                ...el.dataValues
+            }
+        })
+        return res.status(200).json(data)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error reading one club activities'})
+    }
+})
+
+//동아리 전시작품 조회
+router.get('/:id/history',async(req,res)=>{
+    const clubId=req.params.id
+    try{
+        const history=await History.findAll({where:{club_id:clubId}})
+        const data=history.map((el,index)=>{
             return {
                 ...el.dataValues
             }
