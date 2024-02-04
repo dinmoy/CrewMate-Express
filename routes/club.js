@@ -1,5 +1,5 @@
 const express=require('express')
-const {Club}=require('../models')
+const {Club,Member}=require('../models')
 
 const router=express.Router()
 
@@ -13,6 +13,21 @@ router.get('/',async(req,res)=>{
     }  
 })
 
+router.get('/:id/member',async(req,res)=>{
+    const clubId=req.params.id
+    try{
+        const members=await Member.findAll({where: {club_id:clubId}})
+        const data=members.map((el,index)=>{
+            return {
+                ...el.dataValues
+            }
+        })
+        return res.status(200).json(data)
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error reading one club member'})
+    }
+})
 router.post('/',async(req,res)=>{
     try{
         const {name,introduction,profile}=req.body
