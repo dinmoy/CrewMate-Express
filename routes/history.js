@@ -35,4 +35,16 @@ router.put('/:id',async(req,res)=>{
         return res.status(500).json({error:'Error updating history'})
     }
 })
+router.delete('/:id',async(req,res)=>{
+    const historyId=req.params.id
+    try{
+        const history=await History.findByPk(historyId)
+        if(!history) return res.status(404).json('History not found')
+        await history.destroy()
+        return res.status(204).json()
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({error:'Error deleting history'})
+    }
+})
 module.exports=router
