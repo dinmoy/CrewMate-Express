@@ -12,6 +12,9 @@ router.post('/signup',async(req,res)=>{
             ...req.body,
             password:hashedPassword
         })
+        req.session.user=newUser
+        console.log(req.session.user)
+
         return res.status(201).json(newUser)
     }catch(err){
         console.log(err)
@@ -29,6 +32,7 @@ router.post('/login',async(req,res)=>{
             const passwordMatch=await bcrypt.compare(password,user.password)
 
             if(passwordMatch){
+                req.session.user=user
                 return res.status(200).json(user);
             }
         }
