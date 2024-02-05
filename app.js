@@ -12,6 +12,16 @@ const applyRouter=require('./routes/apply')
 const historyRouter=require('./routes/history')
 const scheduleRouter=require('./routes/schedule')
 app.use(express.json())
+app.use(
+    session({
+        secret: 'secret-key',
+        resave:false,
+        saveUninitialized: true,
+        cookie:{
+            maxAge: HTMLSourceElement,
+        },
+    })
+)
 
 app.use('/users',userRouter)
 app.use('/club',clubRouter)
