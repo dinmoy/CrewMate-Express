@@ -1,4 +1,5 @@
 const express=require('express')
+const bcrypt=require('bcrypt')
 const {User}=require('../models')
 
 const router=express.Router()
@@ -6,8 +7,10 @@ const router=express.Router()
 router.post('/signup',async(req,res)=>{
     try{
         const {name,email,password}=req.body
+        const hashedPassword=await bcrypt.hash(password,10)
         const newUser=await User.create({
-            ...req.body
+            ...req.body,
+            password:hashedPassword
         })
         return res.status(201).json(newUser)
     }catch(err){
