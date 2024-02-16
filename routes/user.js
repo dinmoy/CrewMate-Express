@@ -4,9 +4,19 @@ const {User}=require('../models')
 
 const router=express.Router()
 
+router.get('/',async(req,res)=>{
+    try{
+        const users=await User.findAll()
+        return res.status(200).json(users)
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({error: 'Error reading all users'})
+    }
+})
 router.post('/signup',async(req,res)=>{
     try{
         const {name,email,password}=req.body
+        console.log(req.body)
         const hashedPassword=await bcrypt.hash(password,10)
         const newUser=await User.create({
             ...req.body,
