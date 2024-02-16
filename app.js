@@ -1,8 +1,11 @@
 const express = require('express')
 const sequelize = require('./config/database')
+const session = require('express-session');
 const http=require('http')
+const cors=require('cors')
+
 const app = express()
-const port = 3000
+const port = 3001
 
 const userRouter=require('./routes/user')
 const clubRouter=require('./routes/club')
@@ -11,14 +14,16 @@ const memberRouter=require('./routes/member')
 const applyRouter=require('./routes/apply')
 const historyRouter=require('./routes/history')
 const scheduleRouter=require('./routes/schedule')
+
 app.use(express.json())
+app.use(cors())
 app.use(
     session({
         secret: 'secret-key',
         resave:false,
         saveUninitialized: true,
         cookie:{
-            maxAge: HTMLSourceElement,
+            maxAge:  60 * 60 * 1000,
         },
     })
 )
