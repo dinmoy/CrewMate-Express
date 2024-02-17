@@ -20,7 +20,7 @@ router.post('/signup',async(req,res)=>{
         const hashedPassword=await bcrypt.hash(password,10)
         const newUser=await User.create({
             ...req.body,
-            password:hashedPassword
+           password:hashedPassword
         })
         req.session.user=newUser
         console.log(req.session.user)
@@ -36,17 +36,17 @@ router.post('/login',async(req,res)=>{
     try{
         const {email,password}=req.body
 
-        const user=await User.findOne({where: {email}})
+        const user=await User.findOne({where: {email,password}})
 
         if(user){
             const passwordMatch=await bcrypt.compare(password,user.password)
-
+            return res.status(200).json(user);
             if(passwordMatch){
                 req.session.user=user
                 return res.status(200).json(user);
             }
         }
-        return res.status(401).json({error: 'Invalid credentials'})
+        return res.status(400).json({error: 'Invalid credentials'})
     }catch(err){
         console.log(err)
         return res.status(500).json({error : 'Error login'})
