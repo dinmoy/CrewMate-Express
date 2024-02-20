@@ -5,7 +5,7 @@ const http=require('http')
 const cors=require('cors')
 
 const app = express()
-const port = 3001
+const port = 5000
 
 const userRouter=require('./routes/user')
 const clubRouter=require('./routes/club')
@@ -14,9 +14,11 @@ const memberRouter=require('./routes/member')
 const applyRouter=require('./routes/apply')
 const historyRouter=require('./routes/history')
 const scheduleRouter=require('./routes/schedule')
-
+app.use(cors());
 app.use(express.json())
-app.use(cors())
+//app.use(express.static(path.join(__dirname, '/')))
+
+
 app.use(
     session({
         secret: 'secret-key',
