@@ -8,15 +8,7 @@ const Schedule=(sequelize)=>{
             autoIncrement: true,
             allowNull: false,
         },
-        club_id:{
-            type:DataTypes.INTEGER,
-            allowNull:false,
-            reference:{
-                model:'club',
-                key:'id',
-            },
-        },
-        name:{
+        title:{
             type:DataTypes.STRING(20),
             allowNull:false,
         },
@@ -32,7 +24,7 @@ const Schedule=(sequelize)=>{
             type:DataTypes.DATE,
             allowNull:false,
         },
-        memo:{
+        description:{
             type:DataTypes.STRING(500),
             allowNull:false,
         },

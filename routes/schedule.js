@@ -14,7 +14,7 @@ router.get('/',async(req,res)=>{
 })
 router.post('/',async(req,res)=>{
     try{
-        const {club_id,name,place,startTime,endTime,memo}=req.body
+        const {title,place,startTime,endTime,description}=req.body
         const newSchedule=await Schedule.create({...req.body})
         return res.status(201).json(newSchedule)
     }catch(err){
