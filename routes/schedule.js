@@ -3,6 +3,7 @@ const{Schedule}=require('../models')
 
 const router=express.Router()
 
+//모든 일정 조회
 router.get('/',async(req,res)=>{
     try{
         const Schedules=await Schedule.findAll()
@@ -12,9 +13,10 @@ router.get('/',async(req,res)=>{
         return res.status(500).json({error:'Error reading all schedules'})
     }
 })
+//일정 추가
 router.post('/',async(req,res)=>{
     try{
-        const {title,place,startTime,endTime,description}=req.body
+        const {title,place,start,end,description}=req.body
         const newSchedule=await Schedule.create({...req.body})
         return res.status(201).json(newSchedule)
     }catch(err){
@@ -22,7 +24,7 @@ router.post('/',async(req,res)=>{
         return res.status(500).json({error:'Error creating schedule'})
     }
 })
-
+//일정 수정
 router.put('/:id',async(req,res)=>{
     const scheduleId=req.params.id
     try{
@@ -35,7 +37,7 @@ router.put('/:id',async(req,res)=>{
         return res.status(500).json({error:'Error updating schedule'})
     }
 })
-
+//일정 삭제
 router.delete('/:id',async(req,res)=>{
     const scheduleId=req.params.id
     try{
