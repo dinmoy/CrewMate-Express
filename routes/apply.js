@@ -7,7 +7,7 @@ const router=express.Router()
 //지원폼 생성
 router.post('/',async(req,res)=>{
     try{
-        const {club_id,question1,question2,question3}=req.body
+        const {name,student_num,phone_num,answer1,answer2,answer3}=req.body
         const newForm=await Apply.create({...req.body})
         return res.status(201).json(newForm)
     }catch(err){
