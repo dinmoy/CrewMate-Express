@@ -16,11 +16,11 @@ const Schedule=(sequelize)=>{
             type:DataTypes.STRING(20),
             alllowNull:false,
         },
-        startTime:{
+        start:{
             type:DataTypes.DATE,
             allowNull:false,
         },
-        endTime:{
+        end:{
             type:DataTypes.DATE,
             allowNull:false,
         },
