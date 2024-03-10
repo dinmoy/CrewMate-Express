@@ -8,24 +8,28 @@ const Apply = (sequelize) => {
             autoIncrement: true,
             allowNull: false,
         },
-        club_id: {
-            type: DataTypes.INTEGER,
+        name: {
+            type: DataTypes.STRING(20),
             allowNull: false,
-            reference: {
-                model: 'club',
-                key: 'id',
-            },
         },
-        question1: {
+        student_num:{
+            type:DataTypes.STRING(20),
+            allowNull:false,
+        },
+        phone_num:{
+            type:DataTypes.STRING(20),
+            allowNull:false,
+        },
+        answer1: {
             type: DataTypes.STRING(255),
             allowNull: false,
         },
-        question2: {
-            type: DataTypes.STRING(255),
+        answer2: {
+            type: DataTypes.STRING(500),
             allowNull: false,
         },
-        question3: {
-            type: DataTypes.STRING(255),
+        answer3: {
+            type: DataTypes.STRING(500),
             allowNull: false,
         },
     });
